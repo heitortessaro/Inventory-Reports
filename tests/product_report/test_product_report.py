@@ -27,4 +27,4 @@ def test_relatorio_produto():
         instrucoes_de_armazenamento,
     )
 
-    assert report == product.__repr__
+    assert report == product.repr()

@@ -11,11 +11,13 @@ def test_relatorio_produto():
     numero_de_serie = "123456789"
     instrucoes_de_armazenamento = "No instructions"
 
-    report = f"""O produto {nome_do_produto}
-        fabricado em {data_de_fabricacao}
-        por {nome_da_empresa} com validade
-        até {data_de_validade}
-        precisa ser armazenado {instrucoes_de_armazenamento}."""
+    report = (
+        f"O produto {nome_do_produto}"
+        f" fabricado em {data_de_fabricacao}"
+        f" por {nome_da_empresa} com validade"
+        f" até {data_de_validade}"
+        f" precisa ser armazenado {instrucoes_de_armazenamento}."
+    )
 
     product = Product(
         id,
@@ -27,4 +29,6 @@ def test_relatorio_produto():
         instrucoes_de_armazenamento,
     )
 
-    assert report == product.repr()
+    print(product)
+
+    assert report == product.__repr__()

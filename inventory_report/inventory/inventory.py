@@ -1,4 +1,5 @@
 import csv
+import json
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
@@ -9,13 +10,21 @@ class Inventory:
         partial_path = path[-5:]
         if ".csv" in partial_path:
             return Inventory.read_csv(path)
+        if ".json" in partial_path:
+            return Inventory.read_json(path)
 
     @classmethod
     def read_csv(cls, path):
-        with open(path, encoding="utf-8") as file:
+        with open(path, encoding="utf-8") as csv_file:
             product_list = []
-            for row in csv.DictReader(file, delimiter=",", quotechar='"'):
+            for row in csv.DictReader(csv_file, delimiter=",", quotechar='"'):
                 product_list.append(row)
+        return product_list
+
+    @classmethod
+    def read_json(cls, path):
+        with open(path) as json_file:
+            product_list = json.load(json_file)
         return product_list
 
     @classmethod

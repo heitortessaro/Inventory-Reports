@@ -10,8 +10,8 @@ from collections import Counter
 
 class SimpleReport:
     @classmethod
-    def most_frequent(cls, List):
-        occurence_count = Counter(List)
+    def most_frequent(cls, list):
+        occurence_count = Counter(list)
         # get de most common and return just the value
         return occurence_count.most_common()[0][0]
 
